@@ -7,7 +7,7 @@ const TrendingList = props => {
 
   return (
     <div>
-      {/* {trendingTags().map(trendingTag =>
+      {trendingTags().map(trendingTag =>
         <div key={trendingTag.name}>
           <div>
             {trendingTag.name}
@@ -16,7 +16,7 @@ const TrendingList = props => {
             has {trendingTag.tweet_volume} tweets
           </div>
         </div>
-      )} */}
+      )}
     </div>
   );
 };

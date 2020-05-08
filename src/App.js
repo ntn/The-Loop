@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import TrendingList from './components/TrendingList';
+import Header from './components/Header';
 import twitterService from './services/twitter';
 
 const App = () => {
@@ -11,13 +12,11 @@ const App = () => {
     });
   }, []);
 
-  console.log('trending: ', trendingTags);
-
   return (
-    <div>
-      <h2>Trending Tweets</h2>
+    <>
+      <Header title={'The Loop'} />
       <TrendingList trending={trendingTags} />
-    </div>
+    </>
   );
 };
 
