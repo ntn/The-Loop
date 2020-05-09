@@ -1,8 +1,8 @@
 import axios from 'axios';
-const baseUrl = 'http://localhost:3003/twitter/trending';
+const baseUrl = 'http://localhost:3003/twitter';
 
 const getAll = () => {
-  const request = axios.get(baseUrl);
+  const request = axios.get(`${baseUrl}/trending`);
   return request.then(response => response.data);
 };
 

@@ -11,6 +11,7 @@ import Container from '@material-ui/core/Container';
 const useStyles = makeStyles({
   root: {
     minWidth: 300,
+    maxWidth: 300
   },
   title: {
     fontSize: 14,
@@ -38,17 +39,16 @@ const TrendingList = props => {
                 Trending
                 </Typography>
                 <Typography variant="h5" component="h2">
-                  {trendingTag.name}
+                  {trendingTag.name[0] === '#' ?
+                    trendingTag.name :
+                    `#${trendingTag.name.replace(/\s/g, '')}`}
                 </Typography>
                 <Typography className={classes.pos} color="textSecondary">
                 has {trendingTag.tweet_volume} tweets
                 </Typography>
-                <Typography variant="body2" component="p">
-                small summary
-                </Typography>
               </CardContent>
               <CardActions>
-                <Button size="small">See Tweets</Button>
+                <Button size="large">See Tweets</Button>
               </CardActions>
             </Card>
             <br></br>
