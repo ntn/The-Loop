@@ -26,33 +26,37 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const TweetView = ({ name, profilePic, createdDate, text }) => {
+const TweetView = ({ id, name, profilePic, createdDate, text }) => {
   const classes = useStyles();
 
   return (
-    <Container maxWidth="sm">
-      <Card className={classes.root}>
-        <CardHeader
-          avatar={
-            <Avatar alt={name} src={profilePic} className={classes.avatar}>
-                R
-            </Avatar>
-          }
-          action={
-            <IconButton aria-label="settings">
-              <MoreVertIcon />
-            </IconButton>
-          }
-          title={name}
-          subheader={createdDate}
-        />
-        <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {text}
-          </Typography>
-        </CardContent>
-      </Card>
-    </Container>
+    <div key={name}>
+      <Container maxWidth="sm">
+        <Card className={classes.root}>
+          <CardHeader
+            avatar={
+              <Avatar alt={name} src={profilePic} className={classes.avatar}>
+                {name}
+              </Avatar>
+            }
+            action={
+              <a target="_blank" href={`https://twitter.com/${name}/status/${id}`}>
+                <IconButton aria-label="settings">
+                </IconButton>
+              </a>
+            }
+            title={name}
+            subheader={createdDate}
+          />
+          <CardContent>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {text}
+            </Typography>
+          </CardContent>
+        </Card>
+        <br></br>
+      </Container>
+    </div>
   );
 };
 
