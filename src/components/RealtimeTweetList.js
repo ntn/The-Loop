@@ -3,7 +3,7 @@ import socketIOClient from 'socket.io-client';
 import TweetView from './TweetView';
 const ENDPOINT = 'http://localhost:3003';
 
-const RealTimeTweetsList = props => {
+const RealtimeTweetList = props => {
   const [tweets, setTweets] = useState([]);
   const [initialized, setInitialized] = useState(false);
 
@@ -28,7 +28,7 @@ const RealTimeTweetsList = props => {
   }, [initialized]);
 
   return (
-    <div>
+    <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }}>
       {[...new Set(tweets)].map(tweet =>
         <TweetView
           key={tweet.id}
@@ -41,4 +41,4 @@ const RealTimeTweetsList = props => {
   );
 };
 
-export default RealTimeTweetsList;
+export default RealtimeTweetList;

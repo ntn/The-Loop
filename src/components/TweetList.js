@@ -1,64 +1,22 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
-
-
-const useStyles = makeStyles({
-  root: {
-    minWidth: 300,
-  },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
-});
-
+import TweetView from './TweetView';
 
 const TweetList = props => {
-  const classes = useStyles();
   const tweets = () => {
     return props.tweets;
   };
 
-  console.log("tweets: ", tweets)
-
   return (
-    <>
-    </>
-    // <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }}>
-    //   {trendingTags().map(trendingTag =>
-    //     <div key={trendingTag.name}>
-    //       <Container maxWidth="sm">
-    //         <Card className={classes.root} variant="outlined">
-    //           <CardContent>
-    //             <Typography className={classes.title} color="textSecondary" gutterBottom>
-    //             Trending
-    //             </Typography>
-    //             <Typography variant="h5" component="h2">
-    //               {trendingTag.name[0] === '#' ?
-    //                 trendingTag.name :
-    //                 `#${trendingTag.name.replace(/\s/g, '')}`}
-    //             </Typography>
-    //             <Typography className={classes.pos} color="textSecondary">
-    //             has {trendingTag.tweet_volume} tweets
-    //             </Typography>
-    //           </CardContent>
-    //           <CardActions>
-    //             <Button size="large">See Tweets</Button>
-    //           </CardActions>
-    //         </Card>
-    //         <br></br>
-    //       </Container>
-    //     </div>
-    //   )}
-    // </div>
+    <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }}>
+      {tweets.map(tweet =>
+        <TweetView
+          key={tweet.id}
+          name={tweet.user.screen_name}
+          profilePic={tweet.user.profile_image_url}
+          createdDate={tweet.created_at}
+          text={tweet.text} />
+      )}
+    </div>
   );
 };
 
