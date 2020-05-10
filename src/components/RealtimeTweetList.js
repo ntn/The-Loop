@@ -32,6 +32,7 @@ const RealtimeTweetList = props => {
       {[...new Set(tweets)].map(tweet =>
         <TweetView
           key={tweet.id}
+          id={tweet.id}
           name={tweet.user.screen_name}
           profilePic={tweet.user.profile_image_url}
           createdDate={tweet.created_at}

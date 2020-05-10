@@ -6,7 +6,6 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
-
 import {
   BrowserRouter as Router,
   Link,
@@ -28,6 +27,10 @@ const useStyles = makeStyles({
 
 const TrendingTagView = ({ name, tweetVolume }) => {
   const classes = useStyles();
+  const linkStyle = {
+    color: 'inherit',
+    textDecoration: 'inherit'
+  };
 
   return (
     <div key={name}>
@@ -46,7 +49,7 @@ const TrendingTagView = ({ name, tweetVolume }) => {
           </CardContent>
           <CardActions>
             <Button size="large">
-              <Link to={`/tweets/${name.substr(1)}`}>See Tweets</Link>
+              <Link to={`/tweets/${name.substr(1)}`} style={linkStyle}>See Tweets</Link>
             </Button>
           </CardActions>
         </Card>
