@@ -27,9 +27,13 @@ const RealtimeTweetList = props => {
     }
   }, [initialized]);
 
+  const filteredTweets = () => {
+    return tweets.filter((v,i,a) => a.findIndex(t => (t.id === v.id)) ===i);
+  };
+
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }}>
-      {[...new Set(tweets)].map(tweet =>
+      {filteredTweets().map(tweet =>
         <TweetView
           key={tweet.id}
           id={tweet.id}
