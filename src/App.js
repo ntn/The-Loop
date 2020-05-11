@@ -1,25 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { initializeTrendingTags } from './reducers/trendingTagsReducer';
+import {
+  Switch,
+  Route,
+  useRouteMatch
+} from 'react-router-dom';
 import TrendingList from './components/TrendingList';
 import Header from './components/Header';
 import TweetList from './components/TweetList';
 import RealtimeTweetList from './components/RealtimeTweetList';
-import twitterService from './services/twitter';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  useRouteMatch
-} from "react-router-dom"
 
 const App = () => {
-  const [trendingTags, setTrending] = useState([]);
-  // const [tweetsForTag, setTweetsForTag] = useState(thing);
-
-  useEffect( () => {
-    twitterService.getAllTrendingTags().then((initialTrendingTags) => {
-      setTrending(initialTrendingTags);
-    });
-  }, []);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(initializeTrendingTags());
+  }, [dispatch]);
 
   const match = useRouteMatch('/tweets/:searchQuery');
   const tagName = match
@@ -37,7 +33,7 @@ const App = () => {
           <TweetList tagName={tagName} />
         </Route>
         <Route path="/">
-          <TrendingList trending={trendingTags} />
+          <TrendingList />
         </Route>
       </Switch>
     </>
