@@ -1,9 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import TrendingTagView from './TrendingTagView';
 
 const TrendingList = props => {
   const trendingTags = () => {
-    const sanitizedTrendingTags = props.trending.map((trendingTag) => {
+    const sanitizedTrendingTags = props.trendingTags.map((trendingTag) => {
       const name = trendingTag.name[0] === '#'
         ? trendingTag.name
         :`#${trendingTag.name.replace(/\s/g, '')}`;
@@ -21,4 +22,11 @@ const TrendingList = props => {
   );
 };
 
-export default TrendingList;
+const mapStateToProps = (state) => {
+  return {
+    trendingTags: state.trendingTags
+  };
+};
+const connectedTrendingList = connect(mapStateToProps, null)(TrendingList);
+
+export default connectedTrendingList;
