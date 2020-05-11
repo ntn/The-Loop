@@ -7,8 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Badge from '@material-ui/core/Badge';
 import Button from '@material-ui/core/Button';
 import {
-  BrowserRouter as Router,
-  Link,
+  Link
 } from 'react-router-dom';
 
 const useStyles = makeStyles(() => ({

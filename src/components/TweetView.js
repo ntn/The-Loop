@@ -7,7 +7,6 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles((theme) => ({
@@ -40,7 +39,7 @@ const TweetView = ({ id, name, profilePic, createdDate, text }) => {
               </Avatar>
             }
             action={
-              <a target="_blank" href={`https://twitter.com/${name}/status/${id}`}>
+              <a target="_blank" rel="noopener noreferrer" href={`https://twitter.com/${name}/status/${id}`}>
                 <IconButton aria-label="settings">
                 </IconButton>
               </a>
