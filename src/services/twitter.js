@@ -1,5 +1,5 @@
 import axios from 'axios';
-const baseUrl = 'http://localhost:3003/twitter';
+const baseUrl = '/twitter';
 
 const getAllTrendingTags = () => {
   const request = axios.get(`${baseUrl}/trending`);

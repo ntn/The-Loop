@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import socketIOClient from 'socket.io-client';
 import TweetView from './TweetView';
-const ENDPOINT = 'http://localhost:3003';
 
 const RealtimeTweetList = props => {
   const [tweets, setTweets] = useState([]);
   const [initialized, setInitialized] = useState(false);
 
   useEffect(() => {
-    const socket = socketIOClient(ENDPOINT);
+    const socket = socketIOClient();
     socket.on('initialTweets', data => {
       const newTweets = tweets.concat(data);
       setTweets(newTweets);
@@ -18,8 +17,7 @@ const RealtimeTweetList = props => {
 
   useEffect(() => {
     if (initialized) {
-      const socket = socketIOClient(ENDPOINT);
-
+      const socket = socketIOClient();
       socket.on('newTweet', data => {
         tweets.push(data.newTweet);
         setTweets([...tweets]);
